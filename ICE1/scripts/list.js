@@ -35,11 +35,15 @@ for(var counter = 0; counter < listItems.length; counter++){
     listItems[counter].classList.add("cool");
 }
 
-
-
 // ADD NUMBER OF ITEMS IN THE LIST TO THE HEADING
 // h2 element
+const newHeader = document.createElement("h2");
 // h2 text
 // No. of <li> elements
+const numberOfElements = listItems.length;
+const newHeaderText = "Number of items: " + numberOfElements;
 // Content
+var header = document.getElementById("newHeader");
+header.appendChild(newHeader);
 // Update h2 using innerHTML (not textContent) because it contains markup
+newHeader.innerHTML = newHeaderText;
