@@ -14,9 +14,14 @@ groceries.appendChild(newListItem);
 
 // ADD NEW ITEM START OF LIST
 // Create element
+const aNewListItem = document.createElement("li");
 // Create text node
+const newListItemContent = document.createTextNode("oranges");
 // Add text node to element
+aNewListItem.appendChild(newListItemContent);
 // Add element to list
+var startOfList = document.getElementById("one");
+groceries.insertBefore(aNewListItem, startOfList)
 
 
 
