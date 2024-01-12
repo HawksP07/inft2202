@@ -20,17 +20,21 @@ const newListItemContent = document.createTextNode("oranges");
 // Add text node to element
 aNewListItem.appendChild(newListItemContent);
 // Add element to list
-var startOfList = document.getElementById("one");
-groceries.insertBefore(aNewListItem, startOfList)
+const elementOne = document.getElementById("one");
+groceries.insertBefore(aNewListItem, elementOne);
 
 
 
 // All <li> elements
-
+var listItems = groceries.getElementsByTagName("li");
 // ADD A CLASS OF COOL TO ALL LIST ITEMS
 // Counter variable
 // Loop through elements
-// Change class to cool
+for(var counter = 0; counter < listItems.length; counter++){
+    // Change class to cool
+    listItems[counter].classList.add("cool");
+}
+
 
 
 // ADD NUMBER OF ITEMS IN THE LIST TO THE HEADING
