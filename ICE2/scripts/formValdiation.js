@@ -75,36 +75,58 @@ function handleFormSubmit(){
     //Add is-invalid when field is invalid
     if(username.value.length <= 0){
         username.classList.add("is-invalid");
-        usernameErrors.textContent
+        usernameErrors.textContent = "Error, please enter a username";
     }
     else{
         username.classList.add("is-valid");
+        usernameErrors.textContent = "";
     }
 
-    if(email.value.length <= 0){
+    if(email.value.length <= 0 || validateEmailAddressRegex(email.value)){
         email.classList.add("is-invalid");
+        emailErrors.textContent = "Error, please enter an email.";
     }
     else{
         email.classList.add("is-valid");
+        emailErrors.textContent = "";
     }
 
     if(password.value.length <= 0){
         password.classList.add("is-invalid");
+        passwordErrors.textContent = "Error, please enter a password.";
     }
     else{
         password.classList.add("is-valid");
+        passwordErrors.textContent = "";
     }
 
     if(phone.value.length <= 0){
         phone.classList.add("is-invalid");
+        phoneErrors.textContent = "Error, please enter a phone number";
     }
     else{
         phone.classList.add("is-valid");
+        phoneErrors.textContent = "";
     }
+
+    //Select all error elements
+    let errorElements = registrationForm.getElementsByClassName("is-invalid");
+
+    //
+    if(errorElements.length > 0){
+        alert("Please correct errors");
+
+        return false;
+    }
+
+    return true;
 
 }
 // Add a pattern attribute in the telephone element (HTML)
+phone.type = "tel";
+phone.textContent = "123-456-7890";
 // Ensure the password is redacted into dots on screen when typed in (HTML)
+password.type = "password";
 // Create a function that knows if the username is valid (feel free to grab some RegEx from the Interwebs - cite source and test it!)
 // If it is not valid, be sure to update the #generalError <p></p> with a good error message and some highlighting (red background, maybe?)
 // Validate the username when the form is submitted
