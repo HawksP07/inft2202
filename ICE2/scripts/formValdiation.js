@@ -14,6 +14,8 @@ let phoneErrors = document.getElementById("phoneError");
 
 let registrationForm = document.getElementById("registration-form");
 
+let generalErrors = document.getElementById("generalError");
+
 /**
  * Validate the email address
  * @param {string} email    the email address to validate
@@ -50,6 +52,15 @@ function validateEmailAddressRegex(emailString) {
 		&& emailString.match(emailRegex);
 }
 
+// Create a function that knows if the username is valid (feel free to grab some RegEx from the Interwebs - cite source and test it!)
+// Function got from: https://stackoverflow.com/questions/9628879/javascript-regex-username-validation
+function validateUsername(usernameString){
+    var nameRegex = /^[a-zA-Z0-9]+$/;
+    
+    return !!usernameString && typeof usernameString === 'string'
+        && usernameString.match(nameRegex);
+}
+
 
 //TODO:
 // Make all fields required (HTML)
@@ -73,9 +84,12 @@ function handleFormSubmit(){
 
 
     //Add is-invalid when field is invalid
-    if(username.value.length <= 0){
+    // Validate the username when the form is submitted
+    // Clear any additional error message and highlighting when the form is reset
+    if(username.value.length <= 0 || !validateUsername(username.value)){
         username.classList.add("is-invalid");
         usernameErrors.textContent = "Error, please enter a username";
+        username.value = "";
     }
     else{
         username.classList.add("is-valid");
@@ -85,6 +99,7 @@ function handleFormSubmit(){
     if(email.value.length <= 0 || validateEmailAddressRegex(email.value)){
         email.classList.add("is-invalid");
         emailErrors.textContent = "Error, please enter an email.";
+        email.value = "";
     }
     else{
         email.classList.add("is-valid");
@@ -93,6 +108,7 @@ function handleFormSubmit(){
 
     if(password.value.length <= 0){
         password.classList.add("is-invalid");
+        password.value = "";
         passwordErrors.textContent = "Error, please enter a password.";
     }
     else{
@@ -103,6 +119,7 @@ function handleFormSubmit(){
     if(phone.value.length <= 0){
         phone.classList.add("is-invalid");
         phoneErrors.textContent = "Error, please enter a phone number";
+        phone.value = "";
     }
     else{
         phone.classList.add("is-valid");
@@ -115,20 +132,20 @@ function handleFormSubmit(){
     //
     if(errorElements.length > 0){
         alert("Please correct errors");
-
+        generalErrors.textContent = "There are some errors, please correct them."
         return false;
     }
 
+    generalErrors.textContent = "";
     return true;
 
 }
 // Add a pattern attribute in the telephone element (HTML)
 phone.type = "tel";
-phone.textContent = "123-456-7890";
+phone.placeholder = "123-456-7890";
 // Ensure the password is redacted into dots on screen when typed in (HTML)
 password.type = "password";
-// Create a function that knows if the username is valid (feel free to grab some RegEx from the Interwebs - cite source and test it!)
 // If it is not valid, be sure to update the #generalError <p></p> with a good error message and some highlighting (red background, maybe?)
-// Validate the username when the form is submitted
-// Clear any additional error message and highlighting when the form is reset
+
+
 // COMMENT EVERYTHING :D
