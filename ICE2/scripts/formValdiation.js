@@ -1,5 +1,19 @@
 console.log("formValidation.js loaded");
 
+let username = document.getElementById("usernameInput");
+let usernameErrors = document.getElementById("usernameError");
+
+let email = document.getElementById("inputEmail4");
+let emailErrors = document.getElementById("emailError");
+
+let password = document.getElementById("inputPassword4");
+let passwordErrors = document.getElementById("passwordError");
+
+let phone = document.getElementById("inputPhone5");
+let phoneErrors = document.getElementById("phoneError");
+
+let registrationForm = document.getElementById("registration-form");
+
 /**
  * Validate the email address
  * @param {string} email    the email address to validate
@@ -39,6 +53,56 @@ function validateEmailAddressRegex(emailString) {
 
 //TODO:
 // Make all fields required (HTML)
+function handleFormSubmit(){
+    // Assume all fields are invalid
+    let isValid = false;
+
+    // Get all elements with a validation class
+    let hasInvalidClass = document.getElementsByClassName("is-invalid");
+    let hasValidClass = document.getElementsByClassName("is-valid");
+
+
+    // Remove classes for new validations
+    for (var i = 0; i < hasInvalidClass.length; i++){
+        hasInvalidClass[i].classList.remove("is-invalid");
+    }
+
+    for(var i = 0; i < hasValidClass.length; i++){
+        hasValidClass[i].classList.remove("is-valid");
+    }
+
+
+    //Add is-invalid when field is invalid
+    if(username.value.length <= 0){
+        username.classList.add("is-invalid");
+        usernameErrors.textContent
+    }
+    else{
+        username.classList.add("is-valid");
+    }
+
+    if(email.value.length <= 0){
+        email.classList.add("is-invalid");
+    }
+    else{
+        email.classList.add("is-valid");
+    }
+
+    if(password.value.length <= 0){
+        password.classList.add("is-invalid");
+    }
+    else{
+        password.classList.add("is-valid");
+    }
+
+    if(phone.value.length <= 0){
+        phone.classList.add("is-invalid");
+    }
+    else{
+        phone.classList.add("is-valid");
+    }
+
+}
 // Add a pattern attribute in the telephone element (HTML)
 // Ensure the password is redacted into dots on screen when typed in (HTML)
 // Create a function that knows if the username is valid (feel free to grab some RegEx from the Interwebs - cite source and test it!)

@@ -12,7 +12,7 @@
   <body>
     <div class="container">
         <h1 class="top-header" style="text-align: center">Registration Form</h1>
-        <form id="registration-form" name="registration-form" onsubmit="">
+        <form id="registration-form" name="registration-form" onsubmit="return handleFormSubmit()">
             <p id="generalError"></p>
             
             <div class="form-group col-md-6">
@@ -66,4 +66,5 @@
         </form>
     </div>
   </body>
+  <script src="./scripts/formValdiation.js"></script>
 </html>
