@@ -51,6 +51,20 @@ function filtering(){
     }).css('background-color', "red");
 }
 
+function addReplaceRemove(){
+    $('ul#list li:first').append($("<ul><li> I'm going to the be the last item of the first sub-list</li></ul>"));
+    // Prepend
+    $('ul#list').prepend($("<li> Prepended</li>"));
+
+    // Use after to add elements after another
+    $('.red-box').after("<div class='new-box red-box'>New box</div>");
+
+    let newText = 'Last night, Darth Vader came down from the planet Vulcan.';
+
+    $('p.grumpy').replaceWith(`<p>${newText}</p>`);
+}
+
 //traversingTheDOM();
 //cssSelectors();
-filtering();
+//filtering();
+addReplaceRemove();
