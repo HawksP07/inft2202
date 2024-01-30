@@ -42,5 +42,15 @@ function traversingTheDOM(){
 
 }
 
-traversingTheDOM();
+function filtering(){
+    //$('#list').find('li').filter(':even').css('background-color', "2a9d8f");
+
+    // long function of the shortcut .filer(':even')
+    $('#list').find('li').filter(function(i){
+        return i % 2 === 0;
+    }).css('background-color', "red");
+}
+
+//traversingTheDOM();
 //cssSelectors();
+filtering();
