@@ -68,3 +68,16 @@ function addReplaceRemove(){
 //cssSelectors();
 //filtering();
 addReplaceRemove();
+
+$("a").wrap("<h2></h2>");
+
+$("#list2 li:first").remove();
+
+var offsetTop = $("#list2").offset().top;
+console.log(`offsetTop=${offsetTop}`);
+
+var asideCoordinates = new Object();
+asideCoordinates.top = 200;
+asideCoordinates.left = 100;
+$("h2").offset(asideCoordinates);
+
